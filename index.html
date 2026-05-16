@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phronix — Focus. Earn. Level up.</title>
+  <link rel="icon" type="image/png" href="phronix.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo-wrap">
+        <img src="phronix.png" alt="Phronix" class="brand-logo">
+      </div>
+      <div class="brand-text">
+        <h2 class="brand-name">Phronix</h2>
+        <p class="brand-tagline">Focus. <span class="orange">Earn.</span> Level up.</p>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-link active" data-page="home"><span class="nav-icon">&#127968;</span><span class="nav-text">Home</span></a>
+      <a href="#" class="nav-link" data-page="quests"><span class="nav-icon">&#9876;&#65039;</span><span class="nav-text">Quests</span></a>
+      <a href="#" class="nav-link" data-page="timer"><span class="nav-icon">&#9201;&#65039;</span><span class="nav-text">Timer</span></a>
+      <a href="#" class="nav-link" data-page="badges"><span class="nav-icon">&#127941;</span><span class="nav-text">Badges</span></a>
+      <a href="#" class="nav-link" data-page="statistics"><span class="nav-icon">&#128202;</span><span class="nav-text">Statistics</span></a>
+      <a href="#" class="nav-link" data-page="calendar"><span class="nav-icon">&#128197;</span><span class="nav-text">Calendar</span></a>
+      <a href="#" class="nav-link" data-page="settings"><span class="nav-icon">&#9881;&#65039;</span><span class="nav-text">Settings</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="profile-section">
+        <div class="profile-avatar" id="profileAvatar">U</div>
+        <div class="profile-info">
+          <h3 class="profile-name" id="profileName">User</h3>
+          <p class="profile-rank" id="profileRank">NOVICE SEEKER</p>
+          <span class="profile-level-badge" id="profileLevel">LEVEL 1</span>
+        </div>
+      </div>
+      <a href="#" class="nav-link logout-link" id="logoutBtn"><span class="nav-icon">&#8617;&#65039;</span><span class="nav-text">Logout</span></a>
+      <div class="streak-widget">
+        <div class="streak-top"><span class="streak-fire">&#128293;</span><div><span class="streak-number" id="sidebarStreakNum">0</span><span class="streak-label">STUDY STREAK</span></div></div>
+        <div class="streak-days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+      </div>
+    </div>
+  </aside>
+  <main class="main-content" id="mainContent">
+    <!-- HOME -->
+    <section class="page" id="page-home">
+      <div class="home-layout">
+        <div class="home-left">
+          <div class="greeting-section">
+            <h1 class="greeting" id="greetingText">Good evening &#128075;</h1>
+            <p class="greeting-sub">Let's conquer tasks and earn wisdom.</p>
+          </div>
+          <div class="card rank-card">
+            <div class="rank-left"><span class="rank-badge" id="rankBadge">1</span><div><p class="rank-label">CURRENT RANK</p><h3 class="rank-name" id="rankName">Novice Seeker</h3><p class="rank-xp" id="rankXpText">0 / 100 XP until Level 2</p></div></div>
+            <span class="rank-percent" id="rankPercent">&#9889; 0%</span>
+            <div class="rank-bar"><div class="rank-bar-fill" id="rankBarFill" style="width:0%"></div></div>
+          </div>
+          <div class="summary-grid">
+            <div class="card summary-card streak-summary"><div class="summary-icon-wrap"><span class="summary-icon">&#128293;</span></div><div><span class="summary-value" id="homeStreak">0</span> <span class="summary-unit">days</span><p class="summary-label orange">STUDY STREAK</p></div></div>
+            <div class="card summary-card"><p class="summary-header">&#128202; SESSION</p><div class="summary-detail"><span>Focus Time</span><span id="homeFocusTime">0h 0m</span></div><div class="summary-detail"><span>Quests</span><span id="homeQuestsDone">0</span></div><div class="summary-detail"><span>XP Earned</span><span class="orange" id="homeXpEarned">0</span></div></div>
+          </div>
+          <div class="home-two-col">
+            <div class="card daily-card"><h3>&#10024; Daily Activities</h3><div class="daily-header"><span id="dailyDone">0/7 done</span><span class="orange" id="dailyXp">&#9889; 0 XP</span></div><div id="dailyList" class="daily-list"></div></div>
+            <div class="card quests-preview-card"><div class="quests-preview-header"><h3>&#9889; Active Quests</h3><a href="#" class="orange view-all-link" data-page="quests">VIEW ALL &#8250;</a></div><div id="homeQuestList" class="home-quest-list"></div></div>
+          </div>
+        </div>
+        <div class="home-right">
+          <div class="card weekly-progress-card"><div class="wp-header"><h4>Weekly Progress</h4><span id="wpXp">0 / 2,000 XP</span></div><div class="wp-chart" id="wpChart"></div></div>
+          <div class="card achievements-card"><p class="summary-header">&#10024; ACHIEVEMENTS</p><p class="summary-sub" id="homeAchievText">No badges yet</p><p class="summary-detail-sm">Complete quests to earn!</p><p class="summary-detail-sm" id="homeUnlocked">0 / 20 unlocked</p><div class="mini-bar"><div class="mini-bar-fill" id="homeAchievBar" style="width:0%"></div></div></div>
+          <div class="card recent-activity-card"><h4>RECENT ACTIVITY</h4><div id="recentActivity" class="recent-list"></div></div>
+          <div class="card leaderboard-card"><h4>LEADERBOARD</h4><div id="leaderboard" class="leaderboard-list"></div></div>
+        </div>
+      </div>
+    </section>
+    <!-- QUESTS -->
+    <section class="page hidden" id="page-quests">
+      <div class="page-header"><span class="page-icon">&#9876;&#65039;</span><div><h1>Quests</h1><p class="page-sub">Conquer tasks. Earn wisdom.</p></div></div>
+      <div class="card quests-summary-card"><div><p class="qs-label">ACTIVE QUESTS</p><h2 id="activeQuestCount">0</h2></div><div class="qs-right"><p class="qs-label">AVAILABLE XP</p><h2 class="orange">&#9889; <span id="availableXp">0</span></h2></div></div>
+      <div class="quest-tabs"><button class="qtab" data-filter="all">ALL</button><button class="qtab active" data-filter="active">ACTIVE</button><button class="qtab" data-filter="completed">COMPLETED</button></div>
+      <div id="questList" class="quest-list"></div>
+      <button class="btn-primary btn-full" id="createQuestBtn">+ Create New Quest</button>
+    </section>
+    <!-- TIMER -->
+    <section class="page hidden" id="page-timer">
+      <div class="page-header"><span class="page-icon">&#9201;&#65039;</span><div><h1>Study Timer</h1><p class="page-sub">Focus. Earn. Level up.</p></div></div>
+      <div class="card session-reward-banner"><span>&#9889; Session Reward</span><span class="orange" id="sessionRewardXp">+50 XP</span></div>
+      <div class="timer-area">
+        <div class="timer-circle"><svg viewBox="0 0 200 200" class="timer-svg"><circle cx="100" cy="100" r="90" class="timer-track"/><circle cx="100" cy="100" r="90" class="timer-progress" id="timerProgress"/></svg><div class="timer-display"><span class="timer-time" id="timerDisplay">25:00</span><span class="timer-status" id="timerStatus">READY</span></div></div>
+        <div class="timer-controls"><button class="timer-btn" id="resetTimerBtn">&#128260;</button><button class="timer-btn play-btn" id="playTimerBtn">&#9654;</button></div>
+        <p class="session-length-label">SESSION LENGTH</p>
+        <div class="session-btns"><button class="session-btn active" data-min="25">25 min</button><button class="session-btn" data-min="50">50 min</button><button class="session-btn" data-min="90">90 min</button></div>
+        <input type="number" class="custom-min-input" id="customMin" placeholder="Custom minutes" min="1" max="180">
+      </div>
+    </section>
+    <!-- BADGES -->
+    <section class="page hidden" id="page-badges">
+      <div class="page-header"><span class="page-icon">&#127941;</span><div><h1>Achievements</h1><p class="page-sub" id="badgeCountText">0 of 20 unlocked</p></div></div>
+      <div class="badge-section-header"><span class="locked-bar"></span><span>Locked</span><span class="badge-count-pill" id="lockedCount">20</span></div>
+      <div class="badge-grid" id="badgeGrid"></div>
+    </section>
+    <!-- STATISTICS -->
+    <section class="page hidden" id="page-statistics">
+      <div class="page-header"><span class="page-icon">&#128202;</span><div><h1>Statistics</h1><p class="page-sub">Your progress at a glance.</p></div></div>
+      <div class="stats-grid"><div class="card stat-card"><span class="stat-icon-lg">&#9889;</span><p class="stat-label">TOTAL XP</p><h2 id="statTotalXp">0</h2></div><div class="card stat-card"><span class="stat-icon-lg">&#128293;</span><p class="stat-label">BEST STREAK</p><h2 id="statBestStreak">0d</h2></div><div class="card stat-card"><span class="stat-icon-lg">&#127919;</span><p class="stat-label">QUESTS DONE</p><h2 id="statQuestsDone">0</h2></div><div class="card stat-card"><span class="stat-icon-lg">&#128336;</span><p class="stat-label">FOCUS TIME</p><h2 id="statFocusTime">0h 0m</h2></div></div>
+      <div class="card weekly-xp-card"><div class="wxp-header"><h3>Weekly XP</h3><span id="wxpTotal">0 XP this week</span></div><div class="wxp-chart" id="wxpChart"></div></div>
+    </section>
+    <!-- CALENDAR -->
+    <section class="page hidden" id="page-calendar">
+      <div class="page-header"><span class="page-icon">&#128197;</span><div><h1>Calendar</h1><p class="page-sub">Track your quest deadlines.</p></div></div>
+      <div class="card calendar-card"><div class="cal-nav"><button id="calPrev">&#8249;</button><h3 id="calTitle">May 2026</h3><button id="calNext">&#8250;</button></div><div class="cal-grid"><span class="cal-day-header">Mon</span><span class="cal-day-header">Tue</span><span class="cal-day-header">Wed</span><span class="cal-day-header">Thu</span><span class="cal-day-header">Fri</span><span class="cal-day-header sat">Sat</span><span class="cal-day-header sun">Sun</span></div><div id="calDays" class="cal-days"></div></div>
+      <div class="card upcoming-card"><h3>Upcoming Deadlines</h3><div id="upcomingList" class="upcoming-list"></div></div>
+    </section>
+    <!-- SETTINGS -->
+    <section class="page hidden" id="page-settings">
+      <div class="page-header"><span class="page-icon">&#9881;&#65039;</span><div><h1>Settings</h1><p class="page-sub">Manage your preferences.</p></div></div>
+      <div class="card settings-section"><h4 class="settings-label">ACCOUNT</h4><div class="account-row"><div class="settings-avatar" id="settingsAvatar">U</div><div><h3 id="settingsFullName">User</h3><p class="small-text" id="settingsEmail">user@email.com</p><a href="#" class="orange small-text">&#128279; Change avatar</a></div></div></div>
+      <div class="card settings-section"><h4 class="settings-label">PROFILE</h4><label class="field-label">DISPLAY NAME <span class="hint">(shown in "Good morning, __")</span></label><input type="text" class="settings-input" id="displayNameInput"><label class="field-label">USERNAME / INITIALS <span class="hint">(shown on profile card)</span></label><input type="text" class="settings-input" id="initialsInput" maxlength="4"><button class="btn-primary btn-full" id="saveProfileBtn">&#128190; Save Profile Changes</button></div>
+      <div class="card settings-section"><h4 class="settings-label">PREFERENCES</h4><div class="pref-row"><div class="pref-info"><span class="pref-icon">&#128276;</span><div><strong>Notifications</strong><p class="small-text">Quest reminders & streak alerts</p></div></div><label class="toggle"><input type="checkbox" id="notifToggle" checked><span class="slider"></span></label></div><div class="pref-row"><div class="pref-info"><span class="pref-icon">&#128266;</span><div><strong>Sound Effects</strong><p class="small-text">XP gain & completion sounds</p></div></div><label class="toggle"><input type="checkbox" id="soundToggle" checked><span class="slider"></span></label></div></div>
+      <div class="card settings-section"><h4 class="settings-label">ABOUT</h4><div class="about-row"><img src="phronix.png" alt="Phronix" style="width:24px;height:24px;"><div><strong>Phronix</strong><p class="small-text">Focus. Earn. Level up. v1.0</p></div></div></div>
+      <button class="btn-outline btn-full" id="settingsLogoutBtn">&#8617;&#65039; Logout</button>
+    </section>
+  </main>
+  <!-- QUEST DETAIL MODAL -->
+  <div class="modal-overlay hidden" id="questModal"><div class="modal-content"><div class="modal-header"><div class="modal-title-row"><span class="modal-dot">&#9679;</span><div><h3 id="modalTitle">Quest</h3><div class="modal-meta"><span class="difficulty-badge" id="modalDiff">MEDIUM</span><span class="orange" id="modalXp">&#9889; 150 XP</span></div></div></div><button class="modal-close" id="modalClose">&#10005;</button></div><div class="modal-body"><div class="modal-progress-row"><span>PROGRESS</span><span class="orange" id="modalPercent">0%</span></div><div class="progress-bar"><div class="progress-fill" id="modalProgressBar"></div></div><label class="field-label">QUEST NOTES</label><textarea class="settings-input quest-notes" id="modalNotes" rows="3"></textarea><label class="field-label" id="checklistLabel">CHECKLIST (0/0)</label><div id="modalChecklist" class="modal-checklist"></div><button class="btn-primary btn-full" id="modalSaveBtn">&#128190; Save Progress (0%)</button><button class="btn-outline btn-full" id="modalCompleteBtn">&#10003; Mark as Complete — +0 XP</button></div></div></div>
+  <!-- CREATE QUEST MODAL -->
+  <div class="modal-overlay hidden" id="createQuestModal"><div class="modal-content"><div class="modal-header"><h3>Create New Quest</h3><button class="modal-close" id="createModalClose">&#10005;</button></div><div class="modal-body"><label class="field-label">QUEST NAME</label><input type="text" class="settings-input" id="newQuestName" placeholder="e.g. COMP 014 - Midterm Exam"><label class="field-label">DIFFICULTY</label><select class="settings-input" id="newQuestDiff"><option value="EASY">EASY</option><option value="MEDIUM" selected>MEDIUM</option><option value="HARD">HARD</option></select><label class="field-label">XP REWARD</label><input type="number" class="settings-input" id="newQuestXp" value="150" min="10" max="500"><label class="field-label">DEADLINE (optional)</label><input type="date" class="settings-input" id="newQuestDeadline"><label class="field-label">CHECKLIST ITEMS (one per line)</label><textarea class="settings-input quest-notes" id="newQuestChecklist" rows="4" placeholder="Item 1&#10;Item 2&#10;Item 3"></textarea><label class="field-label">NOTES</label><textarea class="settings-input quest-notes" id="newQuestNotes" rows="2" placeholder="Optional notes..."></textarea><button class="btn-primary btn-full" id="createQuestSubmit">&#9889; Create Quest</button></div></div></div>
+  <script src="app.js"></script>
+</body>
+</html>

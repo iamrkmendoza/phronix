@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phronix — Login</title>
+  <link rel="icon" type="image/png" href="phronix.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+  <div class="login-overlay">
+    <div class="login-particles"></div>
+    <div class="login-card">
+      <div class="login-brand">
+        <img src="phronix.png" alt="Phronix" class="login-logo">
+        <h1 class="login-title">Phronix</h1>
+        <p class="login-tagline">Focus. <span class="orange">Earn.</span> Level up.</p>
+      </div>
+      <form id="loginForm" autocomplete="off">
+        <div class="login-field">
+          <label for="loginName">Display Name</label>
+          <input type="text" id="loginName" placeholder="Enter your name" required maxlength="30">
+        </div>
+        <div class="login-field">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="your@email.com" required>
+        </div>
+        <button type="submit" class="login-btn">&#9889; Start Your Journey</button>
+      </form>
+      <p class="login-version">v2.0</p>
+    </div>
+  </div>
+
+  <script>
+// Force clear previous session data so the user must log in fresh
+    
+    function genInit(n) {
+      var p = n.trim().split(/\s+/);
+      return p.length >= 2 ? (p[0][0] + p[1][0]).toUpperCase() : n.trim().substring(0,2).toUpperCase();
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      var name = document.getElementById('loginName').value.trim();
+      var email = document.getElementById('loginEmail').value.trim();
+      if (!name || !email) return;
+      
+      var ini = genInit(name);
+      var profile = {displayName:name, initials:ini, fullName:name, email:email, totalXp:0, level:1, streak:0, bestStreak:0, focusTimeMin:0, focusSessions:0, longestSession:0, questsDone:0, earlyComplete:0, notifications:true, sound:true};
+var quests = [
+  {
+    id: 1, 
+    name: 'English', 
+    diff: 'MEDIUM', 
+    xp: 200, 
+    progress: 0, 
+    notes: 'English literature and technical writing performance indicators', 
+    status: 'active', 
+    deadline: '2026-08-30', 
+    checklist: [
+      {t:'Activity 1',d:false},{t:'Activity 2',d:false},{t:'Activity 3',d:false},{t:'Activity 4',d:false},{t:'Activity 5',d:false},
+      {t:'Quiz 1',d:false},{t:'Quiz 2',d:false},{t:'Long Quiz',d:false},
+      {t:'Technical Writing',d:false},{t:'Poem Presentation',d:false},{t:'Final Exam',d:false}
+    ]
+  },
+  {
+    id: 2, 
+    name: 'Science', 
+    diff: 'HARD', 
+    xp: 250, 
+    progress: 0, 
+    notes: 'Science curriculum and laboratory tracking', 
+    status: 'active', 
+    deadline: '2026-09-30', 
+    checklist: [
+      {t:'Activity 1',d:false},{t:'Activity 2',d:false},{t:'Activity 3',d:false},{t:'Activity 4',d:false},{t:'Activity 5',d:false},
+      {t:'Quiz 1',d:false},{t:'Quiz 2',d:false},{t:'Long Quiz',d:false},
+      {t:'Lab Activity 1',d:false},{t:'Lab Activity 2',d:false},{t:'Lab Activity 3',d:false},
+      {t:'Final Experiment',d:false},{t:'Final Exam',d:false}
+    ]
+  },
+  {
+    id: 3, 
+    name: 'Mathematics', 
+    diff: 'HARD', 
+    xp: 300, 
+    progress: 0, 
+    notes: 'Mathematical problem solving and board performance logs', 
+    status: 'active', 
+    deadline: '2026-09-30', 
+    checklist: [
+      {t:'Activity 1',d:false},{t:'Activity 2',d:false},{t:'Activity 3',d:false},{t:'Activity 4',d:false},{t:'Activity 5',d:false},
+      {t:'Quiz 1',d:false},{t:'Quiz 2',d:false},{t:'Long Quiz',d:false},
+      {t:'Solving Problem in Board Recitation',d:false},{t:'Final Exam',d:false}
+    ]
+  },
+  {
+    id: 4, 
+    name: 'Physical Education', 
+    diff: 'EASY', 
+    xp: 150, 
+    progress: 0, 
+    notes: 'Physical executions and operational task metrics', 
+    status: 'active', 
+    deadline: '2026-08-15', 
+    checklist: [
+      {t:'Activity 1',d:false},{t:'Activity 2',d:false},{t:'Activity 3',d:false},{t:'Activity 4',d:false},{t:'Activity 5',d:false},
+      {t:'Quiz 1',d:false},{t:'Quiz 2',d:false},{t:'Long Quiz',d:false},
+      {t:'Individual Output',d:false},{t:'Group Output',d:false},{t:'Final Exam',d:false}
+    ]
+  },
+  {
+    id: 5, 
+    name: 'Filipino', 
+    diff: 'EASY', 
+    xp: 150, 
+    progress: 0, 
+    notes: 'Wika, panitikan, at mga pakikipagtalastasan', 
+    status: 'active', 
+    deadline: '2026-08-29', 
+    checklist: [
+      {t:'Activity 1',d:false},{t:'Activity 2',d:false},{t:'Activity 3',d:false},{t:'Activity 4',d:false},{t:'Activity 5',d:false},
+      {t:'Quiz 1',d:false},{t:'Quiz 2',d:false},{t:'Long Quiz',d:false},
+      {t:'Recitation 1',d:false},{t:'Recitation 2',d:false},{t:'Final Exam',d:false}
+    ]
+  },
+  {
+    id: 6, 
+    name: 'History', 
+    diff: 'MEDIUM', 
+    xp: 200, 
+    progress: 0, 
+    notes: 'Historical analysis records and collective project timelines', 
+    status: 'active', 
+    deadline: '2026-09-10', 
+    checklist: [
+      {t:'Activity 1',d:false},{t:'Activity 2',d:false},{t:'Activity 3',d:false},{t:'Activity 4',d:false},{t:'Activity 5',d:false},
+      {t:'Quiz 1',d:false},{t:'Quiz 2',d:false},{t:'Long Quiz',d:false},
+      {t:'Group Presentation',d:false},{t:'Final Exam',d:false}
+    ]
+  }
+];
+      
+      localStorage.setItem('phronix_profile', JSON.stringify(profile));
+      localStorage.setItem('phronix_quests', JSON.stringify(quests));
+      localStorage.setItem('phronix_weeklyXp', JSON.stringify({Mon:0, Tue:0, Wed:0, Thu:0, Fri:0, Sat:0, Sun:0}));
+      localStorage.setItem('phronix_daily', JSON.stringify({date:new Date().toISOString().slice(0,10), done:{}}));
+      localStorage.setItem('phronix_recent', JSON.stringify([{text:'Welcome to Phronix!', sub:'Account created \u00b7 just now', xp:0}]));
+      
+      // FIX: Changed "rank:-" to "rank:3" to avoid breaking Javascript Execution
+      localStorage.setItem('phronix_board', JSON.stringify([
+        {name:name+' (you)', initials:ini, sub:'Lv. 1', xp:0, you:true, rank:3},
+        {name:'Elijah', initials:'E', sub:'Lv. 13', xp:2500, you:false, rank:1},
+        {name:'Othniel', initials:'O', sub:'Lv. 5', xp:800, you:false, rank:2}
+      ]));
+      
+      // 2. Head over to the dashboard page once data is successfully stored
+    localStorage.setItem('phronix_logged_in', 'true');
+window.location.href = 'index.html';
+    });
+	
+	
+  </script>
+</body>
+</html>
